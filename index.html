@@ -1,75 +1,110 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calcul Moyenne S2</title>
+<title>Calcul Moyenne Annuelle</title>
 
 <style>
-    body{
-        font-family: Arial, sans-serif;
-        background:#111;
-        color:white;
-        padding:20px;
-    }
+body{
+    font-family:Arial,sans-serif;
+    background:#111;
+    color:white;
+    padding:20px;
+}
 
-    h1{
-        text-align:center;
-        color:#00bfff;
-    }
+h1{
+    text-align:center;
+    color:#00bfff;
+}
 
-    .box{
-        background:#1e1e1e;
-        padding:15px;
-        border-radius:12px;
-        margin-bottom:20px;
-    }
+.box{
+    background:#1e1e1e;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
 
-    h2{
-        color:#00ffcc;
-    }
+h2{
+    color:#00ffcc;
+}
 
-    input{
-        width:90px;
-        padding:8px;
-        margin:5px;
-        border:none;
-        border-radius:8px;
-        text-align:center;
-        font-size:16px;
-    }
+input{
+    width:90px;
+    padding:8px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    text-align:center;
+    font-size:16px;
+}
 
-    button{
-        width:100%;
-        padding:15px;
-        border:none;
-        border-radius:12px;
-        background:#00bfff;
-        color:white;
-        font-size:20px;
-        cursor:pointer;
-        margin-top:20px;
-    }
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#00bfff;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    margin-top:20px;
+}
 
-    button:hover{
-        background:#0099cc;
-    }
+button:hover{
+    background:#0099cc;
+}
 
-    #result{
-        margin-top:25px;
-        text-align:center;
-        font-size:28px;
-        color:#00ff99;
-        font-weight:bold;
-    }
+#result{
+    margin-top:25px;
+    text-align:center;
+    font-size:28px;
+    color:#00ff99;
+    font-weight:bold;
+}
 </style>
 </head>
 <body>
 
-<h1>Calcul Moyenne S2</h1>
+<h1>Calcul Moyenne Annuelle</h1>
 
-<!-- ASD2 -->
+<!-- S1 -->
+
+<div class="box">
+    <h2>Algorithmique 1</h2>
+    <input type="number" id="algo1Cours" placeholder="Cours">
+    <input type="number" id="algo1Td" placeholder="TD">
+    <input type="number" id="algo1Tp" placeholder="TP">
+</div>
+
+<div class="box">
+    <h2>Analyse 1</h2>
+    <input type="number" id="an1Cours" placeholder="Cours">
+    <input type="number" id="an1Td" placeholder="TD">
+</div>
+
+<div class="box">
+    <h2>Algèbre 1</h2>
+    <input type="number" id="alg1Cours" placeholder="Cours">
+    <input type="number" id="alg1Td" placeholder="TD">
+</div>
+
+<div class="box">
+    <h2>SM1</h2>
+    <input type="number" id="sm1Cours" placeholder="Cours">
+    <input type="number" id="sm1Td" placeholder="TD">
+</div>
+
+<div class="box">
+    <h2>Electricité</h2>
+    <input type="number" id="elec1Cours" placeholder="Cours">
+    <input type="number" id="elec1Td" placeholder="TD">
+</div>
+
+<!-- S2 -->
+
 <div class="box">
     <h2>ASD 2</h2>
     <input type="number" id="asdCours" placeholder="Cours">
@@ -77,120 +112,133 @@
     <input type="number" id="asdTp" placeholder="TP">
 </div>
 
-<!-- Analyse 2 -->
 <div class="box">
     <h2>Analyse 2</h2>
     <input type="number" id="anCours" placeholder="Cours">
     <input type="number" id="anTd" placeholder="TD">
 </div>
 
-<!-- Algèbre 2 -->
 <div class="box">
     <h2>Algèbre 2</h2>
     <input type="number" id="algCours" placeholder="Cours">
     <input type="number" id="algTd" placeholder="TD">
 </div>
 
-<!-- SM2 -->
 <div class="box">
     <h2>SM2</h2>
     <input type="number" id="smCours" placeholder="Cours">
     <input type="number" id="smTd" placeholder="TD">
 </div>
 
-<!-- Electronique -->
 <div class="box">
     <h2>Électronique</h2>
     <input type="number" id="elecCours" placeholder="Cours">
     <input type="number" id="elecTd" placeholder="TD">
 </div>
 
-<!-- Logique Math -->
 <div class="box">
     <h2>Logique Math</h2>
     <input type="number" id="logCours" placeholder="Cours">
     <input type="number" id="logTd" placeholder="TD">
 </div>
 
-<!-- AI -->
 <div class="box">
     <h2>AI</h2>
     <input type="number" id="aiCours" placeholder="Cours">
     <input type="number" id="aiTp" placeholder="TP">
 </div>
 
-<button onclick="calculer()">Calculer la moyenne</button>
+<button onclick="calculer()">Calculer la moyenne annuelle</button>
 
 <div id="result"></div>
 
 <script>
-
 function calculer(){
 
-    // ASD2
-    let asdCours = parseFloat(document.getElementById("asdCours").value) || 0;
-    let asdTd = parseFloat(document.getElementById("asdTd").value) || 0;
-    let asdTp = parseFloat(document.getElementById("asdTp").value) || 0;
+    // S1
 
-    let asdCC = (asdTd + asdTp) / 2;
-    let asd = (asdCours * 0.6) + (asdCC * 0.4);
+    let algo1Cours=parseFloat(document.getElementById("algo1Cours").value)||0;
+    let algo1Td=parseFloat(document.getElementById("algo1Td").value)||0;
+    let algo1Tp=parseFloat(document.getElementById("algo1Tp").value)||0;
 
-    // Analyse2
-    let anCours = parseFloat(document.getElementById("anCours").value) || 0;
-    let anTd = parseFloat(document.getElementById("anTd").value) || 0;
+    let algo1CC=(algo1Td+algo1Tp)/2;
+    let algorithmique1=(algo1Cours*0.6)+(algo1CC*0.4);
 
-    let analyse = (anCours * 0.6) + (anTd * 0.4);
+    let an1Cours=parseFloat(document.getElementById("an1Cours").value)||0;
+    let an1Td=parseFloat(document.getElementById("an1Td").value)||0;
+    let analyse1=(an1Cours*0.6)+(an1Td*0.4);
 
-    // Algèbre2
-    let algCours = parseFloat(document.getElementById("algCours").value) || 0;
-    let algTd = parseFloat(document.getElementById("algTd").value) || 0;
+    let alg1Cours=parseFloat(document.getElementById("alg1Cours").value)||0;
+    let alg1Td=parseFloat(document.getElementById("alg1Td").value)||0;
+    let algebre1=(alg1Cours*0.6)+(alg1Td*0.4);
 
-    let algebre = (algCours * 0.6) + (algTd * 0.4);
+    let sm1Cours=parseFloat(document.getElementById("sm1Cours").value)||0;
+    let sm1Td=parseFloat(document.getElementById("sm1Td").value)||0;
+    let sm1=(sm1Cours*0.6)+(sm1Td*0.4);
 
-    // SM2
-    let smCours = parseFloat(document.getElementById("smCours").value) || 0;
-    let smTd = parseFloat(document.getElementById("smTd").value) || 0;
+    let elec1Cours=parseFloat(document.getElementById("elec1Cours").value)||0;
+    let elec1Td=parseFloat(document.getElementById("elec1Td").value)||0;
+    let electricite=(elec1Cours*0.6)+(elec1Td*0.4);
 
-    let sm2 = (smCours * 0.6) + (smTd * 0.4);
+    // S2
 
-    // Electronique
-    let elecCours = parseFloat(document.getElementById("elecCours").value) || 0;
-    let elecTd = parseFloat(document.getElementById("elecTd").value) || 0;
+    let asdCours=parseFloat(document.getElementById("asdCours").value)||0;
+    let asdTd=parseFloat(document.getElementById("asdTd").value)||0;
+    let asdTp=parseFloat(document.getElementById("asdTp").value)||0;
 
-    let electronic = (elecCours * 0.6) + (elecTd * 0.4);
+    let asdCC=(asdTd+asdTp)/2;
+    let asd=(asdCours*0.6)+(asdCC*0.4);
 
-    // Logique Math
-    let logCours = parseFloat(document.getElementById("logCours").value) || 0;
-    let logTd = parseFloat(document.getElementById("logTd").value) || 0;
+    let anCours=parseFloat(document.getElementById("anCours").value)||0;
+    let anTd=parseFloat(document.getElementById("anTd").value)||0;
+    let analyse2=(anCours*0.6)+(anTd*0.4);
 
-    let logique = (logCours * 0.6) + (logTd * 0.4);
+    let algCours=parseFloat(document.getElementById("algCours").value)||0;
+    let algTd=parseFloat(document.getElementById("algTd").value)||0;
+    let algebre2=(algCours*0.6)+(algTd*0.4);
 
-    // AI
-    let aiCours = parseFloat(document.getElementById("aiCours").value) || 0;
-    let aiTp = parseFloat(document.getElementById("aiTp").value) || 0;
+    let smCours=parseFloat(document.getElementById("smCours").value)||0;
+    let smTd=parseFloat(document.getElementById("smTd").value)||0;
+    let sm2=(smCours*0.6)+(smTd*0.4);
 
-    let ai = (aiCours * 0.6) + (aiTp * 0.4);
+    let elecCours=parseFloat(document.getElementById("elecCours").value)||0;
+    let elecTd=parseFloat(document.getElementById("elecTd").value)||0;
+    let electronic=(elecCours*0.6)+(elecTd*0.4);
 
-    // الحساب النهائي بالمعاملات
-    let total =
-        (asd * 5) +
-        (analyse * 4) +
-        (algebre * 2) +
-        (sm2 * 3) +
-        (electronic * 2) +
-        (logique * 1) +
-        (ai * 1);
+    let logCours=parseFloat(document.getElementById("logCours").value)||0;
+    let logTd=parseFloat(document.getElementById("logTd").value)||0;
+    let logique=(logCours*0.6)+(logTd*0.4);
 
-    let coefficients = 5 + 4 + 2 + 3 + 2 + 1 + 1;
+    let aiCours=parseFloat(document.getElementById("aiCours").value)||0;
+    let aiTp=parseFloat(document.getElementById("aiTp").value)||0;
+    let ai=(aiCours*0.6)+(aiTp*0.4);
 
-    let moyenne = total / coefficients;
+    let total=
+        (algorithmique1*5)+
+        (analyse1*4)+
+        (algebre1*2)+
+        (sm1*3)+
+        (electricite*2)+
+        (asd*5)+
+        (analyse2*4)+
+        (algebre2*2)+
+        (sm2*3)+
+        (electronic*2)+
+        (logique*1)+
+        (ai*1);
 
-    document.getElementById("result").innerHTML =
-        "Votre moyenne est : " + moyenne.toFixed(2);
+    let coefficients=
+        5+4+2+3+2+
+        5+4+2+3+2+1+1;
 
+    let moyenne=total/coefficients;
+
+    document.getElementById("result").innerHTML=
+        "Votre moyenne annuelle est : " +
+        moyenne.toFixed(2);
 }
-
 </script>
 
 </body>
 </html>
+```
