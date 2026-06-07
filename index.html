@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moyenne + Save</title>
+<title>Moyenne Universitaire</title>
 
 <style>
 body{
@@ -25,21 +25,32 @@ h1{
     margin-bottom:20px;
 }
 
-h3{
-    color:#ffd700;
-    text-align:center;
-}
-
 h2{
     color:#00ffcc;
 }
 
+h3{
+    text-align:center;
+    color:#ffd700;
+}
+
+.row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+label{
+    width:60px;
+    font-size:14px;
+}
+
 input{
-    width:90px;
-    padding:8px;
-    margin:5px;
+    width:70px;
+    padding:6px;
+    border-radius:6px;
     border:none;
-    border-radius:8px;
     text-align:center;
 }
 
@@ -50,7 +61,7 @@ button{
     border-radius:12px;
     background:#00bfff;
     color:white;
-    font-size:20px;
+    font-size:18px;
     cursor:pointer;
     margin-top:10px;
 }
@@ -69,137 +80,158 @@ button{
 
 <h1>Moyenne Annuelle</h1>
 
-<!-- S1 -->
+<!-- ================= S1 ================= -->
 <div class="box">
-<h3>S1</h3>
+<h3>Semestre 1</h3>
 
 <h2>Algorithmique 1</h2>
-<input id="algo1Cours"><input id="algo1Td"><input id="algo1Tp">
+<div class="row">
+<label>C</label><input id="a1c">
+<label>TD</label><input id="a1t">
+<label>TP</label><input id="a1p">
+</div>
 
 <h2>Analyse 1</h2>
-<input id="an1Cours"><input id="an1Td">
+<div class="row">
+<label>C</label><input id="an1c">
+<label>TD</label><input id="an1t">
+</div>
 
 <h2>Algèbre 1</h2>
-<input id="alg1Cours"><input id="alg1Td">
+<div class="row">
+<label>C</label><input id="al1c">
+<label>TD</label><input id="al1t">
+</div>
 
 <h2>SM1</h2>
-<input id="sm1Cours"><input id="sm1Td">
+<div class="row">
+<label>C</label><input id="sm1c">
+<label>TD</label><input id="sm1t">
+</div>
 
 <h2>Électricité</h2>
-<input id="elec1Cours"><input id="elec1Td">
+<div class="row">
+<label>C</label><input id="el1c">
+<label>TD</label><input id="el1t">
+</div>
 
 <h2>Logiciels Libres</h2>
-<input id="llCours">
+<div class="row">
+<label>C</label><input id="llc">
+</div>
 
 <h2>English</h2>
-<input id="engCours">
+<div class="row">
+<label>C</label><input id="enc">
+</div>
 
 </div>
 
-<!-- S2 -->
+<!-- ================= S2 ================= -->
 <div class="box">
-<h3>S2</h3>
+<h3>Semestre 2</h3>
 
 <h2>ASD 2</h2>
-<input id="asdCours"><input id="asdTd"><input id="asdTp">
+<div class="row">
+<label>C</label><input id="a2c">
+<label>TD</label><input id="a2t">
+<label>TP</label><input id="a2p">
+</div>
 
 <h2>Analyse 2</h2>
-<input id="anCours"><input id="anTd">
+<div class="row">
+<label>C</label><input id="an2c">
+<label>TD</label><input id="an2t">
+</div>
 
 <h2>Algèbre 2</h2>
-<input id="algCours"><input id="algTd">
+<div class="row">
+<label>C</label><input id="al2c">
+<label>TD</label><input id="al2t">
+</div>
 
 <h2>SM2</h2>
-<input id="smCours"><input id="smTd">
+<div class="row">
+<label>C</label><input id="sm2c">
+<label>TD</label><input id="sm2t">
+</div>
 
 <h2>Électronique</h2>
-<input id="elecCours"><input id="elecTd">
+<div class="row">
+<label>C</label><input id="el2c">
+<label>TD</label><input id="el2t">
+</div>
 
 <h2>Logique</h2>
-<input id="logCours"><input id="logTd">
+<div class="row">
+<label>C</label><input id="logc">
+<label>TD</label><input id="logt">
+</div>
 
 <h2>AI</h2>
-<input id="aiCours"><input id="aiTp">
+<div class="row">
+<label>C</label><input id="aic">
+<label>TP</label><input id="aip">
+</div>
 
 </div>
 
-<button onclick="calculer()">Calculer</button>
-<button onclick="saveData()">💾 Sauvegarder</button>
-<button onclick="loadData()">📂 Charger</button>
+<button onclick="calc()">Calculer</button>
 
 <div id="result"></div>
 
 <script>
 
-function calc3(c, t, p){
-    c = parseFloat(c)||0;
-    t = parseFloat(t)||0;
-    p = parseFloat(p)||0;
-
-    if(p && t){
-        return c*0.6 + t*0.2 + p*0.2;
-    }
-    if(p && !t){
-        return c*0.6 + p*0.4;
-    }
-    return c*0.6 + t*0.4;
+function m3(c,t,p){
+c=parseFloat(c)||0;
+t=parseFloat(t)||0;
+p=parseFloat(p)||0;
+if(p && t){
+return c*0.6 + t*0.2 + p*0.2;
+}
+if(p && !t){
+return c*0.6 + p*0.4;
+}
+return c*0.6 + t*0.4;
 }
 
-// ================= CALCUL =================
-function calculer(){
+function calc(){
 
 // S1
-let algo1 = calc3(algo1Cours.value, algo1Td.value, algo1Tp.value) * 5;
-let an1 = calc3(an1Cours.value, an1Td.value, 0) * 4;
-let alg1 = calc3(alg1Cours.value, alg1Td.value, 0) * 2;
-let sm1 = calc3(sm1Cours.value, sm1Td.value, 0) * 3;
-let elec1 = calc3(elec1Cours.value, elec1Td.value, 0) * 2;
-let ll = (parseFloat(llCours.value)||0) * 1;
-let eng = (parseFloat(engCours.value)||0) * 1;
+let s1 =
+(m3(a1c.value,a1t.value,a1p.value)*5)+
+(m3(an1c.value,an1t.value,0)*4)+
+(m3(al1c.value,al1t.value,0)*2)+
+(m3(sm1c.value,sm1t.value,0)*3)+
+(m3(el1c.value,el1t.value,0)*2)+
+(llc.value*1)+
+(enc.value*1);
 
-let moyS1 = (algo1+an1+alg1+sm1+elec1+ll+eng)/18;
+let moy1 = s1/18;
 
 
 // S2
-let asd2 = calc3(asdCours.value, asdTd.value, asdTp.value) * 5;
-let an2 = calc3(anCours.value, anTd.value, 0) * 4;
-let alg2 = calc3(algCours.value, algTd.value, 0) * 2;
-let sm2 = calc3(smCours.value, smTd.value, 0) * 3;
-let elec2 = calc3(elecCours.value, elecTd.value, 0) * 2;
-let log2 = calc3(logCours.value, logTd.value, 0) * 1;
-let ai2 = calc3(aiCours.value, 0, aiTp.value) * 1;
+let s2 =
+(m3(a2c.value,a2t.value,a2p.value)*5)+
+(m3(an2c.value,an2t.value,0)*4)+
+(m3(al2c.value,al2t.value,0)*2)+
+(m3(sm2c.value,sm2t.value,0)*3)+
+(m3(el2c.value,el2t.value,0)*2)+
+(m3(logc.value,logt.value,0)*1)+
+(m3(aic.value,0,aip.value)*1);
 
-let moyS2 = (asd2+an2+alg2+sm2+elec2+log2+ai2)/18;
+let moy2 = s2/18;
 
 
 // final
-let moy = (moyS1 + moyS2)/2;
+let moy = (moy1 + moy2)/2;
 
 result.innerHTML =
-"S1: " + moyS1.toFixed(2) + "<br>" +
-"S2: " + moyS2.toFixed(2) + "<br>" +
+"S1: " + moy1.toFixed(2) + "<br>" +
+"S2: " + moy2.toFixed(2) + "<br>" +
 "Final: " + moy.toFixed(2);
 
 }
-
-// ================= SAVE =================
-function saveData(){
-    let inputs = document.querySelectorAll("input");
-    inputs.forEach(i=>{
-        localStorage.setItem(i.id, i.value);
-    });
-    alert("Saved!");
-}
-
-// ================= LOAD =================
-function loadData(){
-    let inputs = document.querySelectorAll("input");
-    inputs.forEach(i=>{
-        i.value = localStorage.getItem(i.id) || "";
-    });
-}
-
-window.onload = loadData;
 
 </script>
 
