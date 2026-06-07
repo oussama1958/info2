@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moyenne Annuelle</title>
+<title>Moyenne + Save</title>
 
 <style>
 body{
@@ -25,14 +25,13 @@ h1{
     margin-bottom:20px;
 }
 
-h2{
-    color:#00ffcc;
-}
-
 h3{
     color:#ffd700;
     text-align:center;
-    margin-bottom:15px;
+}
+
+h2{
+    color:#00ffcc;
 }
 
 input{
@@ -53,10 +52,7 @@ button{
     color:white;
     font-size:20px;
     cursor:pointer;
-}
-
-button:hover{
-    background:#0099cc;
+    margin-top:10px;
 }
 
 #result{
@@ -73,127 +69,138 @@ button:hover{
 
 <h1>Moyenne Annuelle</h1>
 
-<!-- ================= S1 ================= -->
+<!-- S1 -->
 <div class="box">
-<h3>Semestre 1 (S1)</h3>
+<h3>S1</h3>
 
 <h2>Algorithmique 1</h2>
-<input id="algo1Cours" placeholder="Cours">
-<input id="algo1Td" placeholder="TD">
-<input id="algo1Tp" placeholder="TP">
+<input id="algo1Cours"><input id="algo1Td"><input id="algo1Tp">
 
 <h2>Analyse 1</h2>
-<input id="an1Cours" placeholder="Cours">
-<input id="an1Td" placeholder="TD">
+<input id="an1Cours"><input id="an1Td">
 
 <h2>Algèbre 1</h2>
-<input id="alg1Cours" placeholder="Cours">
-<input id="alg1Td" placeholder="TD">
+<input id="alg1Cours"><input id="alg1Td">
 
 <h2>SM1</h2>
-<input id="sm1Cours" placeholder="Cours">
-<input id="sm1Td" placeholder="TD">
+<input id="sm1Cours"><input id="sm1Td">
 
-<h2>Electricité</h2>
-<input id="elec1Cours" placeholder="Cours">
-<input id="elec1Td" placeholder="TD">
+<h2>Électricité</h2>
+<input id="elec1Cours"><input id="elec1Td">
 
 <h2>Logiciels Libres</h2>
-<input id="llCours" placeholder="Cours">
+<input id="llCours">
 
 <h2>English</h2>
-<input id="engCours" placeholder="Cours">
+<input id="engCours">
 
 </div>
 
-<!-- ================= S2 ================= -->
+<!-- S2 -->
 <div class="box">
-<h3>Semestre 2 (S2)</h3>
+<h3>S2</h3>
 
 <h2>ASD 2</h2>
-<input id="asdCours" placeholder="Cours">
-<input id="asdTd" placeholder="TD">
-<input id="asdTp" placeholder="TP">
+<input id="asdCours"><input id="asdTd"><input id="asdTp">
 
 <h2>Analyse 2</h2>
-<input id="anCours" placeholder="Cours">
-<input id="anTd" placeholder="TD">
+<input id="anCours"><input id="anTd">
 
 <h2>Algèbre 2</h2>
-<input id="algCours" placeholder="Cours">
-<input id="algTd" placeholder="TD">
+<input id="algCours"><input id="algTd">
 
 <h2>SM2</h2>
-<input id="smCours" placeholder="Cours">
-<input id="smTd" placeholder="TD">
+<input id="smCours"><input id="smTd">
 
 <h2>Électronique</h2>
-<input id="elecCours" placeholder="Cours">
-<input id="elecTd" placeholder="TD">
+<input id="elecCours"><input id="elecTd">
 
-<h2>Logique Math</h2>
-<input id="logCours" placeholder="Cours">
-<input id="logTd" placeholder="TD">
+<h2>Logique</h2>
+<input id="logCours"><input id="logTd">
 
 <h2>AI</h2>
-<input id="aiCours" placeholder="Cours">
-<input id="aiTp" placeholder="TP">
+<input id="aiCours"><input id="aiTp">
 
 </div>
 
 <button onclick="calculer()">Calculer</button>
+<button onclick="saveData()">💾 Sauvegarder</button>
+<button onclick="loadData()">📂 Charger</button>
 
 <div id="result"></div>
 
 <script>
+
+function calc3(c, t, p){
+    c = parseFloat(c)||0;
+    t = parseFloat(t)||0;
+    p = parseFloat(p)||0;
+
+    if(p && t){
+        return c*0.6 + t*0.2 + p*0.2;
+    }
+    if(p && !t){
+        return c*0.6 + p*0.4;
+    }
+    return c*0.6 + t*0.4;
+}
+
+// ================= CALCUL =================
 function calculer(){
 
-// ================= S1 =================
+// S1
+let algo1 = calc3(algo1Cours.value, algo1Td.value, algo1Tp.value) * 5;
+let an1 = calc3(an1Cours.value, an1Td.value, 0) * 4;
+let alg1 = calc3(alg1Cours.value, alg1Td.value, 0) * 2;
+let sm1 = calc3(sm1Cours.value, sm1Td.value, 0) * 3;
+let elec1 = calc3(elec1Cours.value, elec1Td.value, 0) * 2;
+let ll = (parseFloat(llCours.value)||0) * 1;
+let eng = (parseFloat(engCours.value)||0) * 1;
 
-let algo1 = ((parseFloat(algo1Cours.value)||0)*0.6 + ((parseFloat(algo1Td.value)||0 + parseFloat(algo1Tp.value)||0)/2)*0.4);
-let an1 = ((parseFloat(an1Cours.value)||0)*0.6 + (parseFloat(an1Td.value)||0)*0.4);
-let alg1 = ((parseFloat(alg1Cours.value)||0)*0.6 + (parseFloat(alg1Td.value)||0)*0.4);
-let sm1 = ((parseFloat(sm1Cours.value)||0)*0.6 + (parseFloat(sm1Td.value)||0)*0.4);
-let elec1 = ((parseFloat(elec1Cours.value)||0)*0.6 + (parseFloat(elec1Td.value)||0)*0.4);
-let ll = (parseFloat(llCours.value)||0);
-let eng = (parseFloat(engCours.value)||0);
-
-let totalS1 =
-(algo1*5)+(an1*4)+(alg1*2)+(sm1*3)+(elec1*2)+(ll*1)+(eng*1);
-
-let coefS1 = 18;
-
-let moyS1 = totalS1 / coefS1;
+let moyS1 = (algo1+an1+alg1+sm1+elec1+ll+eng)/18;
 
 
-// ================= S2 =================
+// S2
+let asd2 = calc3(asdCours.value, asdTd.value, asdTp.value) * 5;
+let an2 = calc3(anCours.value, anTd.value, 0) * 4;
+let alg2 = calc3(algCours.value, algTd.value, 0) * 2;
+let sm2 = calc3(smCours.value, smTd.value, 0) * 3;
+let elec2 = calc3(elecCours.value, elecTd.value, 0) * 2;
+let log2 = calc3(logCours.value, logTd.value, 0) * 1;
+let ai2 = calc3(aiCours.value, 0, aiTp.value) * 1;
 
-let asd = ((parseFloat(asdCours.value)||0)*0.6 + ((parseFloat(asdTd.value)||0 + parseFloat(asdTp.value)||0)/2)*0.4);
-let an2 = ((parseFloat(anCours.value)||0)*0.6 + (parseFloat(anTd.value)||0)*0.4);
-let alg2 = ((parseFloat(algCours.value)||0)*0.6 + (parseFloat(algTd.value)||0)*0.4);
-let sm2 = ((parseFloat(smCours.value)||0)*0.6 + (parseFloat(smTd.value)||0)*0.4);
-let elec2 = ((parseFloat(elecCours.value)||0)*0.6 + (parseFloat(elecTd.value)||0)*0.4);
-let log = ((parseFloat(logCours.value)||0)*0.6 + (parseFloat(logTd.value)||0)*0.4);
-let ai = ((parseFloat(aiCours.value)||0)*0.6 + (parseFloat(aiTp.value)||0)*0.4);
-
-let totalS2 =
-(asd*5)+(an2*4)+(alg2*2)+(sm2*3)+(elec2*2)+(log*1)+(ai*1);
-
-let coefS2 = 18;
-
-let moyS2 = totalS2 / coefS2;
+let moyS2 = (asd2+an2+alg2+sm2+elec2+log2+ai2)/18;
 
 
-// ================= FINAL =================
-
-let moyAnnuelle = (moyS1 + moyS2) / 2;
+// final
+let moy = (moyS1 + moyS2)/2;
 
 result.innerHTML =
-"📘 Moyenne S1 : " + moyS1.toFixed(2) + "<br>" +
-"📗 Moyenne S2 : " + moyS2.toFixed(2) + "<br><br>" +
-"⭐ Moyenne Annuelle : " + moyAnnuelle.toFixed(2);
+"S1: " + moyS1.toFixed(2) + "<br>" +
+"S2: " + moyS2.toFixed(2) + "<br>" +
+"Final: " + moy.toFixed(2);
 
 }
+
+// ================= SAVE =================
+function saveData(){
+    let inputs = document.querySelectorAll("input");
+    inputs.forEach(i=>{
+        localStorage.setItem(i.id, i.value);
+    });
+    alert("Saved!");
+}
+
+// ================= LOAD =================
+function loadData(){
+    let inputs = document.querySelectorAll("input");
+    inputs.forEach(i=>{
+        i.value = localStorage.getItem(i.id) || "";
+    });
+}
+
+window.onload = loadData;
+
 </script>
 
 </body>
